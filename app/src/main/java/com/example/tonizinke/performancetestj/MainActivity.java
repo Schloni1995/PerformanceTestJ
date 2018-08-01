@@ -13,9 +13,13 @@ import com.example.tonizinke.performancetestj.prime.MillerRabin;
 import com.example.tonizinke.performancetestj.stringOP.BuildString;
 import com.example.tonizinke.performancetestj.stringOP.ConcatString;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
+    long start = System.currentTimeMillis();
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -31,70 +35,93 @@ public class MainActivity extends AppCompatActivity {
         concatButton = findViewById(R.id.btn_concat);
         buildButton = findViewById(R.id.btn_build);
 
-        ackButton.setOnClickListener(new View.OnClickListener() {
+        ackButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 Ackermann.ackITT(0, 0);
-                Log.i(MainActivity.class.getSimpleName(), "Finished");
-                Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+                toOutput("Finished");
             }
         });
-        cpuButton.setOnClickListener(new View.OnClickListener() {
+        cpuButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                try {
+            public void onClick(View view)
+            {
+                try
+                {
                     new CPUeater(2);
-                } catch (InterruptedException e) {
+                } catch(InterruptedException e)
+                {
                     Log.e("ERROR", e.getMessage());
                 }
-                Log.i(MainActivity.class.getSimpleName(), "Finished");
-                Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+                toOutput("Finished");
             }
         });
-        eratoButton.setOnClickListener(new View.OnClickListener() {
+        eratoButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 new Eratosthenes();
-                Log.i(MainActivity.class.getSimpleName(), "Finished");
-                Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+                toOutput("Finished");
             }
         });
-        leibnitzButton.setOnClickListener(new View.OnClickListener() {
+        leibnitzButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                new Leibnitzreihe();
-                Log.i(MainActivity.class.getSimpleName(), "Finished");
-                Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+            public void onClick(View view)
+            {
+                Leibnitzreihe lr = new Leibnitzreihe();
+                toOutput(String.valueOf(lr.getTimeDiff()));
             }
         });
-        millerButton.setOnClickListener(new View.OnClickListener() {
+        millerButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 new MillerRabin();
-                Log.i(MainActivity.class.getSimpleName(), "Finished");
-                Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+                toOutput("Finished");
             }
         });
-        buildButton.setOnClickListener(new View.OnClickListener() {
+        buildButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                final BuildString bs = new BuildString(100000);
+            public void onClick(View view)
+            {
+                final BuildString bs = new BuildString(50000);
                 final Thread build = new Thread(bs);
                 build.start();
-                Log.i(MainActivity.class.getSimpleName(), "Finished");
-                Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+                while(build.isAlive())
+                {
+
+                }
+                toOutput(String.valueOf(bs.getSbTime()));
             }
         });
-        concatButton.setOnClickListener(new View.OnClickListener() {
+        concatButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                final ConcatString cs = new ConcatString(100000);
+            public void onClick(View view)
+            {
+                final ConcatString cs = new ConcatString(50000);
                 final Thread concat = new Thread(cs);
                 concat.start();
+                while(concat.isAlive())
+                {
 
-                Log.i(MainActivity.class.getSimpleName(), "Finished");
-                Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
+                }
+                toOutput(String.valueOf(cs.getConTime()));
             }
         });
+        Toast.makeText(MainActivity.this, (System.currentTimeMillis() - start) + "", Toast.LENGTH_LONG).show();
+    }
+
+    public void toOutput(String msg)
+    {
+        Log.i(MainActivity.class.getSimpleName(), msg);
+        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
     }
 }
