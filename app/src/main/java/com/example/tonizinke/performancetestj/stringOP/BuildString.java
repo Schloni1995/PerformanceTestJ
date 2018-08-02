@@ -1,28 +1,44 @@
 package com.example.tonizinke.performancetestj.stringOP;
 
-public class BuildString implements Runnable
+import android.util.Log;
+
+public class BuildString
 {
     private final int o;
-    long start;
+    private long start;
     private long sbTime;
+    private StringBuilder sb = new StringBuilder();
 
     public BuildString(final int o)
     {
         this.o = o;
+        doWarmUp();
+        doTest();
     }
 
-    @Override
-    public void run()
+    private void doWarmUp()
+    {
+        Log.d("Warmup", "warmUp gestartet");
+        for(int j = 0; j < 20; j++)
+        {
+            testOp();
+        }
+        Log.d("Warmup", "warmUp beendet");
+    }
+
+    private void doTest()
     {
         start = System.currentTimeMillis();
-//        start = System.nanoTime();
-        final StringBuilder sb = new StringBuilder();
+        sb = new StringBuilder();
+        testOp();
+        sbTime = System.currentTimeMillis() - start;
+    }
+
+    private void testOp()
+    {
         for(int i = 0; i < o; i++)
             sb.append(i);
-        // System.out.println(sb.toString());
-//        sbTime = System.nanoTime() - start;
-       String s = sb.toString();
-        sbTime = System.currentTimeMillis() - start;
+        String s = sb.toString();
     }
 
     /**

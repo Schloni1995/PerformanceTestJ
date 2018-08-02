@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.example.tonizinke.performancetestj.cpu.CPUeater;
 import com.example.tonizinke.performancetestj.prime.Eratosthenes;
-import com.example.tonizinke.performancetestj.prime.MillerRabin;
+import com.example.tonizinke.performancetestj.sorts.BubbleSort;
 import com.example.tonizinke.performancetestj.stringOP.BuildString;
 import com.example.tonizinke.performancetestj.stringOP.ConcatString;
 
@@ -23,25 +23,21 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button ackButton, cpuButton, leibnitzButton;
-        Button eratoButton, millerButton;
-        Button concatButton, buildButton;
+        Button fibButton = findViewById(R.id.btn_fibonacci);
+        Button cpuButton = findViewById(R.id.btn_cpueater);
+        Button eratoButton = findViewById(R.id.btn_eratosthenes);
+        Button leibnitzButton = findViewById(R.id.btn_leipnitz);
+        Button concatButton = findViewById(R.id.btn_concat);
+        Button buildButton = findViewById(R.id.btn_build);
+        Button bubbleButton = findViewById(R.id.btn_bubblesort);
 
-        ackButton = findViewById(R.id.btn_ackermann);
-        cpuButton = findViewById(R.id.btn_cpueater);
-        eratoButton = findViewById(R.id.btn_eratosthenes);
-        leibnitzButton = findViewById(R.id.btn_leipnitz);
-        millerButton = findViewById(R.id.btn_miller_rabin);
-        concatButton = findViewById(R.id.btn_concat);
-        buildButton = findViewById(R.id.btn_build);
-
-        ackButton.setOnClickListener(new View.OnClickListener()
+        fibButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                Ackermann.ackITT(0, 0);
-                toOutput("Finished");
+                Fibonacci fib = new Fibonacci(40);
+                toOutput(String.valueOf(fib.getTimeDiff()));
             }
         });
         cpuButton.setOnClickListener(new View.OnClickListener()
@@ -64,8 +60,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                new Eratosthenes();
-                toOutput("Finished");
+                Eratosthenes er = new Eratosthenes(7000);
+                toOutput(String.valueOf(er.getTimeDiff()));
             }
         });
         leibnitzButton.setOnClickListener(new View.OnClickListener()
@@ -77,27 +73,12 @@ public class MainActivity extends AppCompatActivity
                 toOutput(String.valueOf(lr.getTimeDiff()));
             }
         });
-        millerButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                new MillerRabin();
-                toOutput("Finished");
-            }
-        });
         buildButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
                 final BuildString bs = new BuildString(50000);
-                final Thread build = new Thread(bs);
-                build.start();
-                while(build.isAlive())
-                {
-
-                }
                 toOutput(String.valueOf(bs.getSbTime()));
             }
         });
@@ -106,16 +87,21 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                final ConcatString cs = new ConcatString(50000);
-                final Thread concat = new Thread(cs);
-                concat.start();
-                while(concat.isAlive())
-                {
-
-                }
+                final ConcatString cs = new ConcatString(10000);
                 toOutput(String.valueOf(cs.getConTime()));
             }
         });
+        bubbleButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                BubbleSort bs = new BubbleSort();
+                toOutput(String.valueOf(bs.getTimeDiff()));
+            }
+        });
+
+
         Toast.makeText(MainActivity.this, (System.currentTimeMillis() - start) + "", Toast.LENGTH_LONG).show();
     }
 

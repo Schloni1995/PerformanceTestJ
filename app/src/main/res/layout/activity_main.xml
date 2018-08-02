@@ -26,18 +26,6 @@
         android:text="Concat" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cpu" />
-
-    <Button
-        android:id="@+id/btn_cpueater"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CPUeater" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,10 +38,10 @@
         android:text="Leipnitz" />
 
     <Button
-        android:id="@+id/btn_ackermann"
+        android:id="@+id/btn_fibonacci"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ackermann" />
+        android:text="Fibonacci" />
 
     <TextView
         android:id="@+id/textView"
@@ -62,15 +50,45 @@
         android:text="Prime" />
 
     <Button
-        android:id="@+id/btn_miller_rabin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Miller-Rabin" />
-
-    <Button
         android:id="@+id/btn_eratosthenes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Eratostenes" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sorts" />
+
+    <Button
+        android:id="@+id/btn_bubblesort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bubblesort" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cpu" />
+
+    <Button
+        android:id="@+id/btn_cpueater"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CPUeater" />
 
 </LinearLayout>
