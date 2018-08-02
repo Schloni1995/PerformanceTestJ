@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         Button concatButton = findViewById(R.id.btn_concat);
         Button buildButton = findViewById(R.id.btn_build);
         Button bubbleButton = findViewById(R.id.btn_bubblesort);
+        Button insButton = findViewById(R.id.btn_insertionsort);
 
         fibButton.setOnClickListener(new View.OnClickListener()
         {
@@ -92,6 +93,15 @@ public class MainActivity extends AppCompatActivity
             }
         });
         bubbleButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                BubbleSort bs = new BubbleSort();
+                toOutput(String.valueOf(bs.getTimeDiff()));
+            }
+        });
+        insButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)

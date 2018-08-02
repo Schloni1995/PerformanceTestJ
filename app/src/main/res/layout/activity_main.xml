@@ -68,10 +68,10 @@
         android:text="Bubblesort" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_insertionsort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Insertionsort" />
 
     <Button
         android:id="@+id/button3"

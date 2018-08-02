@@ -2,7 +2,6 @@ package com.example.tonizinke.performancetestj.sorts;
 
 public class BubbleSort
 {
-    public static final double MILLI = Math.pow(10, -3);
     private long timeDiff;
     public BubbleSort()
     {
@@ -12,7 +11,7 @@ public class BubbleSort
         timeDiff = System.currentTimeMillis() - start;
     }
 
-    public static void bubblesort(final int[] x)
+    private void bubblesort(final int[] x)
     {
         boolean unsortiert = true;
         int temp;
