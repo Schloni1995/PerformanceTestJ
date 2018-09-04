@@ -1,7 +1,5 @@
 package com.example.tonizinke.performancetestj.stringOP;
 
-import android.util.Log;
-
 public class BuildString
 {
     private final int o;
@@ -18,12 +16,12 @@ public class BuildString
 
     private void doWarmUp()
     {
-        Log.d("Warmup", "warmUp gestartet");
+        android.util.Log.d("Warmup", "warmUp gestartet");
         for(int j = 0; j < 20; j++)
         {
             testOp();
         }
-        Log.d("Warmup", "warmUp beendet");
+        android.util.Log.d("Warmup", "warmUp beendet");
     }
 
     private void doTest()
@@ -41,9 +39,6 @@ public class BuildString
         String s = sb.toString();
     }
 
-    /**
-     * @return the sbTime
-     */
     public long getSbTime()
     {
         return sbTime;

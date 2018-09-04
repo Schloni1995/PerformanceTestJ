@@ -1,7 +1,5 @@
 package com.example.tonizinke.performancetestj.stringOP;
 
-import android.util.Log;
-
 public class ConcatString
 {
     private final int o;
@@ -18,21 +16,17 @@ public class ConcatString
 
     private void doWarmUp()
     {
-        Log.d("Warmup", "warmUp gestartet");
+        android.util.Log.d("Warmup", "warmUp gestartet");
         for(int j = 0; j < 20; j++)
-        {
             testOp();
-        }
-        Log.d("Warmup", "warmUp beendet");
+        android.util.Log.d("Warmup", "warmUp beendet");
     }
 
     private void testOp()
     {
         String s = "";
         for(int i = 0; i < o; i++)
-        {
             s += i;
-        }
     }
 
     private void doTest()
@@ -41,12 +35,5 @@ public class ConcatString
         testOp();
         conTime = System.currentTimeMillis() - start;
     }
-
-    /**
-     * @return the conTime
-     */
-    public long getConTime()
-    {
-        return conTime;
-    }
+    public long getConTime(){return conTime;}
 }

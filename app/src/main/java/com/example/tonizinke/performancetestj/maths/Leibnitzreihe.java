@@ -1,28 +1,13 @@
-package com.example.tonizinke.performancetestj;
+package com.example.tonizinke.performancetestj.maths;
 
 class Leibnitzreihe
 {
-    long start, end;
+    private long start, end;
 
     Leibnitzreihe()
     {
         doWarmup();
         doTest();
-    }
-
-    private void doTest()
-    {
-        start = System.currentTimeMillis();
-        leibnitz1();
-        end = System.currentTimeMillis();
-    }
-
-    private void doWarmup()
-    {
-        for(int i = 0; i < 20; i++)
-        {
-            leibnitz1();
-        }
     }
 
     private static void leibnitz1()
@@ -37,23 +22,34 @@ class Leibnitzreihe
         {
             if(!b)
             {
-                zahl =+ (1 / x);
+                zahl = +(1 / x);
                 b = true;
             }
             else
             {
-                zahl =- (1 / x);
+                zahl = -(1 / x);
                 b = false;
             }
             i++;
             x = x + 2;
         }
-        System.out.println("Pi ist ungefaehr " + (4.0 * zahl));
     }
 
+    private void doTest()
+    {
+        start = System.currentTimeMillis();
+        leibnitz1();
+        end = System.currentTimeMillis();
+    }
+    private void doWarmup()
+    {
+        for(int i = 0; i < 20; i++)
+        {
+            leibnitz1();
+        }
+    }
     public long getTimeDiff()
     {
         return end - start;
     }
-
 }

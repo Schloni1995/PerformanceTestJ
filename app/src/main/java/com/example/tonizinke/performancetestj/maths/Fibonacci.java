@@ -1,4 +1,4 @@
-package com.example.tonizinke.performancetestj;
+package com.example.tonizinke.performancetestj.maths;
 
 public class Fibonacci
 {

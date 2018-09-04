@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.tonizinke.performancetestj.cpu.CPUeater;
+import com.example.tonizinke.performancetestj.maths.Fibonacci;
+import com.example.tonizinke.performancetestj.maths.Leibnitzreihe;
 import com.example.tonizinke.performancetestj.prime.Eratosthenes;
 import com.example.tonizinke.performancetestj.sorts.BubbleSort;
+import com.example.tonizinke.performancetestj.sorts.InsertionSort;
+import com.example.tonizinke.performancetestj.sorts.Mergesort;
 import com.example.tonizinke.performancetestj.stringOP.BuildString;
 import com.example.tonizinke.performancetestj.stringOP.ConcatString;
 
@@ -24,13 +27,13 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         Button fibButton = findViewById(R.id.btn_fibonacci);
-        Button cpuButton = findViewById(R.id.btn_cpueater);
         Button eratoButton = findViewById(R.id.btn_eratosthenes);
         Button leibnitzButton = findViewById(R.id.btn_leipnitz);
         Button concatButton = findViewById(R.id.btn_concat);
         Button buildButton = findViewById(R.id.btn_build);
         Button bubbleButton = findViewById(R.id.btn_bubblesort);
         Button insButton = findViewById(R.id.btn_insertionsort);
+        Button merButton = findViewById(R.id.btn_mergesort);
 
         fibButton.setOnClickListener(new View.OnClickListener()
         {
@@ -39,21 +42,6 @@ public class MainActivity extends AppCompatActivity
             {
                 Fibonacci fib = new Fibonacci(40);
                 toOutput(String.valueOf(fib.getTimeDiff()));
-            }
-        });
-        cpuButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                try
-                {
-                    new CPUeater(2);
-                } catch(InterruptedException e)
-                {
-                    Log.e("ERROR", e.getMessage());
-                }
-                toOutput("Finished");
             }
         });
         eratoButton.setOnClickListener(new View.OnClickListener()
@@ -106,11 +94,19 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                BubbleSort bs = new BubbleSort();
-                toOutput(String.valueOf(bs.getTimeDiff()));
+                InsertionSort is = new InsertionSort();
+                toOutput(String.valueOf(is.getTimeDiff()));
             }
         });
-
+        merButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Mergesort ms = new Mergesort();
+                toOutput(String.valueOf(ms.getTimeDiff()));
+            }
+        });
 
         Toast.makeText(MainActivity.this, (System.currentTimeMillis() - start) + "", Toast.LENGTH_LONG).show();
     }
